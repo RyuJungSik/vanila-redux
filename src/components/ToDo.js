@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { actionCreators } from '../store'
+import { remove } from '../store'
 
  function ToDo({text, onBtnClick, id}) {
     return (
         <li>
             <Link to={`/${id}`}>
-            {text}<button onClick={onBtnClick}>DEL</button>
+            {text}
             </Link>
+            <button onClick={onBtnClick}>DEL</button>
         </li>
     )
 }
@@ -16,7 +17,8 @@ import { actionCreators } from '../store'
 function mapDispatchToProps(dispatch, ownProps) {
     return{
         onBtnClick:()=>{
-            dispatch(actionCreators.deleteToDo(ownProps.id))
+            console.log(ownProps);
+            dispatch(remove(ownProps.id))
         }
     }
 }
