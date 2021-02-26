@@ -1,9 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
-export default function Detail() {
+ function Detail({toDo}) {
     return (
-        <div>
-            
-        </div>
+        <>
+         <h1>{toDo?.text}</h1> 
+        <h5>Create at : {toDo?.id}</h5>
+        </>
     )
 }
+
+function mapStateToProps(state, ownProps){
+    console.log(state);
+    const{
+        match : {
+            params : {id}
+        }
+    }=ownProps;
+    return {toDo : state.find(toDo=> toDo.id===parseInt(id))};
+}
+
+export default connect(mapStateToProps)(Detail);

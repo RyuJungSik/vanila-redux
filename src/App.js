@@ -6,8 +6,8 @@ import Home from './routes/Home';
 export default function App() {
     return (
         <Router>
-        <Route path="/" component={Home} />
-        <Router path="/:id" component={Detail} />
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/:id" component={Detail} ></Route>
         </Router>
     )
 }
